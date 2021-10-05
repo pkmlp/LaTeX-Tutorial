@@ -8,16 +8,16 @@
 \def\autor{Peter Kessler}
 \def\email{peter.kessler@id.ethz.ch}
 \def\mtrnr{1234567}
-\def\datum{\today}
-\def\titel{Einf\"uhrung in LaTeX}
-\def\artderdoku{\LaTeX\ Tutorial}
+\def\datum{4. Oktober 2021}
+\def\titel{Titel der Doku}
+\def\artderdoku{Art der Doku}
 \def\ethz{Eidgen\"ossische~Technische~Hochschule~Z\"urich}
-\def\department{Informatikdienste}
-\def\institut{Procurement and Portfolio Management}
-\def\professur{Portfolio Management}
-\def\professor{Dordaneh Arangeh}
-\def\studienjahrgang{2019}
-\def\betreuer{Fabio Consani}
+\def\department{Department~for~Computer~Science}
+\def\institut{Institute for Computing Platforms}
+\def\professur{Data Sciences, Data Systems, and Data Services}
+\def\professor{Prof. Ce Zhang}
+\def\studienjahrgang{2020}
+\def\betreuer{Hans Mustermann}
 \def\koexaminator{Bodo Bitbeisser}
 %
 %
@@ -64,7 +64,7 @@
 \renewcommand*\listoflotentryname{\bfseries\tablename}
 \BeforeStartingTOC[lot]{\renewcommand*\autodot{:}}
 \usepackage{setspace}
-\clearscrheadfoot
+\clearpairofpagestyles
 \pagestyle{scrheadings}
 \renewcommand{\sectionmarkformat}{}
 \ohead{\rightmark}
@@ -75,13 +75,11 @@
 \usepackage{fontenc}
 \usepackage{tcolorbox}
 \usepackage{ulem}
-\usepackage{url}
-\urldef{\Kompendium}\url{https://de.wikibooks.org/wiki/LaTeX-Kompendium:_F%C3%BCr_Mathematiker}
 %
 %
 %
 % ============================================================================
-% Package für Symbole und Formeln:
+% Package für Symbole:
 % ============================================================================
 %
 \usepackage{amsmath, amssymb}
@@ -121,9 +119,15 @@
 %     den zweit-obersten Eintrag (PdfLaTeX + bib(la)tex + PdfLaTeX(x2) - PDF anzeigen) auswählen
 % ============================================================================
 %
-\usepackage[numbers]{natbib}
-\bibliographystyle{plainnat}
-\renewcommand*{\bibfont}{\raggedright}
+% Für BibLaTex
+%\usepackage[numbers]{natbib}
+%\bibliographystyle{plainnat}
+%\renewcommand*{\bibfont}{\raggedright}
+
+%Für Biber
+\usepackage{csquotes}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{./Verzeichnisse/Literatur.bib}
 %
 %
 %
@@ -168,15 +172,6 @@
 % ============================================================================
 %
 \newcounter{SeitenzahlSpeicherRoman}
-%
-%
-%
-% ============================================================================
-% Theorem und Proof Environment. 
-% ============================================================================
-%
-\usepackage{amsthm}
-\newtheorem{theorem}{Satz}
 %
 %
 %
@@ -519,11 +514,6 @@
 \end{spacing}
 %
 %
-\subsection{Tabellen - Alternativen}
-\begin{spacing}{1.25}
-\input{./Inhalte/Tabellen_Alternativen.tex}
-\end{spacing}%
-%
 %
 %
 %
@@ -531,7 +521,6 @@
 %
 \pagebreak 
 \section{Arbeiten mit Bildern / Grafiken}
-\label{Bilder}
 \begin{spacing}{1.25}
 \input{./Inhalte/Inhalt_Bilder.tex}
 \end{spacing}
@@ -591,8 +580,7 @@
 % ===== Kapitel 9 ======
 %
 \pagebreak 
-\section{Arbeiten mit Stichworten} 
-\label{Stichworte}
+\section{Arbeiten mit Stichworten}
 \begin{spacing}{1.25}
 \input{./Inhalte/How_to_Stichworte.tex}
 \end{spacing}
@@ -634,51 +622,6 @@
 \end{spacing}
 %
 %
-%
-%
-%
-% ===== Kapitel 11 ======
-%
-\pagebreak 
-\section{Arbeiten mit Formeln}
-\begin{spacing}{1.25}
-\input{./Inhalte/How_to_Formeln.tex}
-\end{spacing}
-%
-%
-\pagebreak 
-\subsection{Inline Formeln}
-\begin{spacing}{1.25}
-\input{./Inhalte/How_to_Inline_Formeln.tex}
-\end{spacing}
-%
-%
-\pagebreak
-\subsection{Abgesetzte Formeln}
-\begin{spacing}{1.25}
-\input{./Inhalte/How_to_Abgesetzte_Formeln.tex}
-\end{spacing}
-%
-%
-\pagebreak
-\subsection{Ausgerichtete Formeln}
-\begin{spacing}{1.25}
-\input{./Inhalte/How_to_Ausgerichtete_Formeln.tex}
-\end{spacing}%
-%
-%
-\pagebreak
-\subsection{Theorem und Proof}
-\begin{spacing}{1.25}
-\input{./Inhalte/How_to_Theorem_Proof.tex}
-\end{spacing}%%
-%
-%
-\pagebreak
-\subsection{Beispiele}
-\begin{spacing}{1.25}
-\input{./Inhalte/How_to_Math_Beispiele.tex}
-\end{spacing}%%
 %
 %
 %
@@ -731,7 +674,10 @@
 \clearpage
 \addcontentsline{toc}{section}{Literatur- / Quellenverzeichnis}
 \renewcommand{\refname}{Literatur- / Quellenverzeichnis} 
-\bibliography{./Verzeichnisse/Literatur}
+% Für Biber
+\printbibliography
+% Für BibLaTex
+%\bibliography{./Verzeichnisse/Literatur}
 %
 %
 %
